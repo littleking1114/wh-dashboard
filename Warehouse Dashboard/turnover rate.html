@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Raw material turnover rate</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+</head>
+<body>
+    <h1>Raw material turnover rate</h1>
+    <canvas id="turnoverRateChart" width="800" height="400"></canvas>
+    <script>
+        // Register the ChartDataLabels plugin
+        Chart.register(ChartDataLabels);
+
+        var ctx = document.getElementById('turnoverRateChart').getContext('2d');
+        var turnoverRateChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["11/1/2021", "2/7/2022", "3/2/2022", "4/1/2022", "5/5/2022", "6/1/2022", "7/1/2022", "8/1/2022", "9/1/2022", "10/9/2022",
+                         "11/1/2022", "12/7/2022", "1/5/2023", "2/1/2023", "3/1/2023", "4/6/2023", "5/4/2023", "6/1/2023", "7/3/2023", "8/1/2023",
+                         "9/4/2023", "10/9/2023", "11/1/2023", "12/1/2023", "1/2/2024", "2/1/2024", "3/1/2024", "4/1/2024", "5/6/2024", "6/3/2024",
+                         "7/1/2024", "8/1/2024", "9/2/2024", "10/8/2024", "11/1/2024", "12/2/2024", "1/2/2025", "2/5/2025", "3/3/2025"],
+                datasets: [{
+                    label: 'Turnover rate',
+                    data: [5.091, 6.142, 6.017, 6.013, 5.478, 5.394, 5.263, 5.249, 5.539, 5.567,
+                           4.021, 4.179, 5.945, 5.135, 4.79, 3.212, 4.693, 4.399, 3.889, 3.595,
+                           3.42, 3.32, 3.23, 3.06, 2.86, 2.83, 2.57, 2.744, 2.749, 2.96,
+                           2.84, 2.96, 2.89, 3.05, 3.01, 3.5, 3.9, 4.1, 4.1],
+                    backgroundColor: 'rgba(144, 238, 144, 0.5)',
+                    borderColor: 'rgba(0, 128, 0, 1)',
+                    borderWidth: 1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                    pointBackgroundColor: 'rgba(0, 128, 0, 1)',
+                    pointBorderColor: 'rgba(0, 128, 0, 1)',
+                    fill: true,
+                    datalabels: {
+                        align: 'end',
+                        anchor: 'end',
+                        color: 'black',
+                        formatter: function(value, context) {
+                            return value.toFixed(2);
+                        }
+                    }
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Raw material turnover rate'
+                    },
+                    datalabels: {
+                        color: 'black'
+                    }
+                },
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'month'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Turnover rate'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse Dashboard</title>
+
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            text-align: center;
+            font-size: 2em;
+            margin: 20px 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column; /* Stack rows vertically */
+            padding-bottom: 20px;
+        }
+        .row {
+            display: flex;
+            width: 100%;
+            margin-bottom: 20px; /* Add some space between rows */
+        }
+        .doc, .kpis {
+            background-color: lightgreen;
+            width: 50%;
+            padding: 20px;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+            border: 1px dashed #000;
+            height: 150px;
+        }
+        .kpis {
+            background-color: lightcyan;
+        }
+        .plan, .other {
+            background-color: rgba(255, 255, 204, 0.7);
+            width: 50%; 
+            padding: 20px;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+            border: 1px dashed #000;
+            height: 150px;
+        }
+        .other {
+            background-color: rgba(248, 212, 240);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        Warehouse Dashboard
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="doc">
+                <h2>相关文档</h2>
+                <p>
+                    <a href="./doc.html">点击阅读或下载</a>
+                </p>    
+            </div>
+            <div class="kpis">
+                <h2>KPIs 绩效指标</h2>
+                <p>
+                    <a href="./KPI.html"> 点击查看历史记录</a>
+                </p>
+		<p>
+                    <a href="./turnover rate.html"> 库存周转率</a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="plan">
+                <h2>散件发货数量</h2>
+                <p>
+                    <a href="https://app.powerbi.com/view?r=eyJrIjoiNWEwODgxODUtOTllYy00ZWVmLWFjYzktM2MzZmY4ZTRlYzg0IiwidCI6ImNlNGYyYTQwLWFlNjEtNDM1OS05YzA3LTBjYTk5Mzg0M2Y0ZCJ9">
+                        计划发货条数
+                    </a>
+                </p> 
+                <p>
+                    <a href="./CKD.html">
+                        CKD包装计划
+                    </a>
+                </p>    
+            </div>
+            <div class="other">
+                <h2>部门活动等</h2>
+                <p>
+                    其它等活动内容
+                </p>    
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
