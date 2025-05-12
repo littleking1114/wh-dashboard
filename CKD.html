@@ -43,8 +43,37 @@
         }
 
 	.spacer {
-            margin-top: 140px; /* Adjust the value as needed */
+            margin-top: 100px; /* Adjust the value as needed */
         }
+
+	/* ===================Below is to add the explanation of the colors.*/
+
+	.footer-content {
+            bottom: 0;
+            left: 0;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .green-square {
+            width: 50px;
+            height: 20px;
+            background-color: lightgreen;
+            margin-right: 8px;
+        }
+        .yellow-square {
+            width: 50px;
+            height: 20px;
+            background-color: lightyellow;
+            margin-right: 8px;
+        }
+        .text {
+            font-size: 14px;
+        }
+	/* ==================Above is to add the explanation of the colors.*/
+
+	
     </style>
 
 </head>
@@ -145,8 +174,17 @@
         </tr>
     </table>
 
+<p class="spacer"></p>
 
-<p class="spacer">最近更新日期：2025-05-12</p>
+<div class="footer-content">
+    <div class="green-square"></div>
+    <span class="text">已完成</span>
+</div>
+<div class="footer-content">
+    <div class="yellow-square"></div>
+    <span class="text">包装中</span>
+</div>
+<p>最近更新日期：2025-05-12</p>
 
 
 </body>
