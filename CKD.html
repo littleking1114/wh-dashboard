@@ -3,190 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CKD planning</title>
+    <title>CKD plan</title>
     <link rel="icon" href="web icon.png" type="image/png">
+
 
     <style>
 
         body {
-            background-color: rgba(253, 243, 237, 0.5);
+            background-color: rgba(157, 210, 220, 0.62); /* RGB color with 62% transparency */
             font-family: Arial, sans-serif;
         }
 
         .header {
             text-align: center;
-            font-size: 24px;
-            margin: 40px 0;
-        }
-	table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-	.green {
-            background-color: lightgreen;
-        }
-	.yellow	{
-	    background-color: lightyellow;
-	}
-        .black {
-            color: black;
-        }
-	.first-row {
-            height: 70px; /* Set the height of the first row */
-	    border-bottom: 4px solid #000;
+            font-size: 26px;
+            margin: 20px 0;
         }
 
-	.spacer {
-            margin-top: 100px; /* Adjust the value as needed */
-        }
-
-	/* ===================Below is to add the explanation of the colors.*/
-
-	.footer-content {
-            bottom: 0;
-            left: 0;
+        .date-list {
+            margin: 20px;
             padding: 10px;
-            display: flex;
-            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
         }
-        
-        .green-square {
-            width: 50px;
-            height: 20px;
-            background-color: lightgreen;
-            margin-right: 8px;
+        .ckd-item {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background-color: rgba(215,237,241);
+           
         }
-        .yellow-square {
-            width: 50px;
-            height: 20px;
-            background-color: lightyellow;
-            margin-right: 8px;
-        }
-        .text {
-            font-size: 14px;
-        }
-	/* ==================Above is to add the explanation of the colors.*/
-
-	
     </style>
-
 </head>
 <body>
     <div class="header">
-        2025 CKD包装计划
+        CKD包装计划
     </div>
-    <table>
-        <tr class="first-row">
-            <th></th>
-            <th>1月</th>
-            <th>2月</th>
-            <th>3月</th>
-            <th>4月</th>
-            <th>5月</th>
-            <th>6月</th>
-            <th>7月</th>
-            <th>8月</th>
-            <th>9月</th>
-            <th>10月</th>
-            <th>11月</th>
-            <th>12月</th>
-        </tr>
-        <tr>
-            <td>R920</td>
-            <td></td>
-            <td></td>
-            <td class="green">6</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="green">6</td>
-            <td></td>
-            <td></td>
-            <td>6</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>L524</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="green">8</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>8</td>
-        </tr>
-        <tr>
-            <td>L538</td>
-            <td class="green">8</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="yellow">8</td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>L566</td>
-            <td></td>
-            <td class="green">8</td>
-            <td></td>
-            <td class="green">8</td>
-            <td></td>
-            <td></td>
-            <td class="green">8</td>
-            <td class="green">8</td>
-            <td></td>
-            <td>8</td>
-            <td>8</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>A918</td>
-            <td></td>
-            <td></td>
-            <td class="green">8</td>
-            <td></td>
-            <td></td>
-            <td class="green">8</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>8</td>
-            <td></td>
-        </tr>
-    </table>
-
-<p class="spacer"></p>
-
-<div class="footer-content">
-    <div class="green-square"></div>
-    <span class="text">已完成</span>
-</div>
-<div class="footer-content">
-    <div class="yellow-square"></div>
-    <span class="text">包装中</span>
-</div>
-<p>最近更新日期：2025-09-01</p>
+    <div class="ckd-item">
+        <p>
+	    <a href="./CKD/CKD_2025.html">2025年计划</a>
+	</p>
+	<p>
+	    <a href="./CKD/CKD_2026.html">2026年计划</a>
+	</p>
+    </div>
 
 
 </body>
