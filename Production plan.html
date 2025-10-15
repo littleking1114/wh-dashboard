@@ -1,0 +1,66 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>Excel Upload and Display</title>
+  <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 5px;
+    }
+    #controls {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Upload Excel File</h2>
+  <input type="file" id="upload" accept=".xlsx, .xls">
+  
+  <div id="controls">
+    <button onclick="savePage()">Save Page as HTML</button>
+  </div>
+
+  <div id="output"><table><tbody><tr><td>MO Status</td><td>Production Sequence</td><td>Machine Serial Number</td><td>Project</td></tr><tr><td>Planned</td><td>Re/7/22/2024</td><td>R934-1550/53334</td><td>544906309</td></tr><tr><td>Planned</td><td>Re/7/22/2024</td><td>R938-1650/56813</td><td>544907428</td></tr><tr><td>Planned</td><td>Re/7/22/2024</td><td>R926-1715/52584</td><td>544907531</td></tr><tr><td>Active</td><td>H1/20250917/01</td><td>LH40M-2066/180782</td><td>544908557</td></tr><tr><td>Active</td><td>H1/20250923/01</td><td>LH40M-2066/180791</td><td>544908558</td></tr><tr><td>Active</td><td>H1/20250924/01</td><td>R920-1545/63221</td><td>544908599</td></tr><tr><td>Active</td><td>H1/20250925/01</td><td>R930-1716/63197</td><td>544908595</td></tr><tr><td>Active</td><td>H1/20250926/01</td><td>A916-2063/180751</td><td>544908529</td></tr><tr><td>Active</td><td>H1/20250929/01</td><td>R920-1545/63267</td><td>544908604</td></tr><tr><td>Active</td><td>H1/20250930/01</td><td>R920-1545/63268</td><td>544908605</td></tr><tr><td>Planned</td><td>Re/10/10/2025</td><td>R920-1545/61519</td><td>544908269</td></tr><tr><td>Active</td><td>H1/20251013/01</td><td>A918-2064/180759</td><td>544908530</td></tr><tr><td>Active</td><td>H1/20251014/01</td><td>R945-1866/63313</td><td>544908613</td></tr><tr><td>Active</td><td>H1/20251014/02</td><td>A918-2064/183488</td><td>544908746</td></tr><tr><td>Active</td><td>H1/20251015/01</td><td>R930-1716/63317</td><td>544908615</td></tr><tr><td>Active</td><td>H1/20251016/01</td><td>A918-2064/180761</td><td>544908541</td></tr><tr><td>Active</td><td>H1/20251017/01</td><td>R930-1716/63887</td><td>544908696</td></tr><tr><td>Active</td><td>H1/20251017/02</td><td>A918-2064/183489</td><td>544908747</td></tr><tr><td>Active</td><td>H1/20251020/01</td><td>R922-1442/63323</td><td>544908622</td></tr><tr><td>Active</td><td>H1/20251021/01</td><td>R922-1442/63326</td><td>544908624</td></tr><tr><td>Active</td><td>H1/20251022/01</td><td>A916-2063/180753</td><td>544908559</td></tr><tr><td>Active</td><td>H1/20251022/02</td><td>A918-2064/183490</td><td>544908748</td></tr><tr><td>Active</td><td>H1/20251023/01</td><td>R920-1545/63716</td><td>544908692</td></tr><tr><td>Released</td><td>H1/20251024/01</td><td>R930-1716/63889</td><td>544908697</td></tr><tr><td>Planned</td><td>H1/20251024/02</td><td>R922-1442/63328</td><td>544908625</td></tr><tr><td>Planned</td><td>H1/20251027/01</td><td>R922-1442/63329</td><td>544908627</td></tr><tr><td>Active</td><td>H1/20251027/02</td><td>A918-2064/183491</td><td>544908749</td></tr><tr><td>Planned</td><td>Re/10/27/2025</td><td>R920-1545/63089</td><td>544908583</td></tr><tr><td>Planned</td><td>Re/10/27/2025</td><td>R920-1545/63080</td><td>544908586</td></tr><tr><td>Planned</td><td>H1/20251028/01</td><td>R920-1545/63226</td><td>544908601</td></tr><tr><td>Planned</td><td>H1/20251029/01</td><td>A920-2063/180771</td><td>544908560</td></tr><tr><td>Planned</td><td>H1/20251030/01</td><td>R920-1545/63257</td><td>544908602</td></tr><tr><td>Active</td><td>H1/20251030/02</td><td>A918-2064/183492</td><td>544908750</td></tr><tr><td>Planned</td><td>H1/20251031/01</td><td>R920-1545/63707</td><td>544908684</td></tr><tr><td>Planned</td><td>H1/20251103/01</td><td>R920-1545/63251</td><td>544908603</td></tr><tr><td>Active</td><td>H1/20251103/02</td><td>A918-2064/183493</td><td>544908751</td></tr><tr><td>Planned</td><td>H1/20251104/01</td><td>R930-1716/63881</td><td>544908693</td></tr><tr><td>Active</td><td>H1/20251106/02</td><td>A918-2064/183494</td><td>544908752</td></tr><tr><td>Active</td><td>H1/20251112/02</td><td>A918-2064/183495</td><td>544908753</td></tr><tr><td>Planned</td><td>Re/3/11/2026 1:40:00 AM</td><td>LH40M-2066/157383</td><td>544908307</td></tr><tr><td>Planned</td><td>Re/10/18/2024</td><td>PR756-1998/31383</td><td>544908888</td></tr><tr><td>Active</td><td>D1/20250915/01</td><td>PR736-1997/32636</td><td>544908614</td></tr><tr><td>Active</td><td>D1/20250922/01</td><td>PR736-1997/31288</td><td>544909132</td></tr><tr><td>Active</td><td>D1/20250924/01</td><td>PR736-1997/31856</td><td>544908670</td></tr><tr><td>Planned</td><td>D1/20251027/01</td><td>PR736-1997/31855</td><td>544908689</td></tr><tr><td>Released</td><td>Re/9/17/2025</td><td>L566-1797/94370</td><td>544908370</td></tr><tr><td>Released</td><td>Re/9/17/2025</td><td>L566-1797/94384</td><td>544908371</td></tr><tr><td>Released</td><td>Re/9/17/2025</td><td>L566-1797/97244</td><td>544908548</td></tr><tr><td>Released</td><td>Re/9/17/2025</td><td>L566-1797/97216</td><td>544908527</td></tr><tr><td>Released</td><td>Re/9/17/2025</td><td>L566-1797/97250</td><td>544908551</td></tr><tr><td>Active</td><td>W1/20250919/01</td><td>L550-1796/95514</td><td>544908442</td></tr><tr><td>Active</td><td>W1/20250922/01</td><td>L550-1796/95886</td><td>544908500</td></tr><tr><td>Active</td><td>W1/20250923/01</td><td>L566-1797/98332</td><td>544908652</td></tr><tr><td>Active</td><td>W1/20250924/01</td><td>L566-1797/98336</td><td>544908657</td></tr><tr><td>Active</td><td>W1/20250925/01</td><td>L566-1797/98082</td><td>544908608</td></tr><tr><td>Active</td><td>W1/20250926/01</td><td>L566-1797/98080</td><td>544908609</td></tr><tr><td>Active</td><td>W1/20250926/02</td><td>L550-1796/97248</td><td>544908573</td></tr><tr><td>Active</td><td>W1/20250929/01</td><td>L566-1797/93746</td><td>544908331</td></tr><tr><td>Active</td><td>W1/20250930/01</td><td>L566-1797/93744</td><td>544908332</td></tr><tr><td>Active</td><td>W1/20250930/02</td><td>L566-1797/98315</td><td>544908626</td></tr><tr><td>Released</td><td>Re/9/30/2025</td><td>L566-1797/94376</td><td>544908369</td></tr><tr><td>Released</td><td>Re/9/30/2025 6:01:00 AM</td><td>L538-1493/90588</td><td>544908093</td></tr><tr><td>Active</td><td>W1/20251013/01</td><td>L566-1797/98084</td><td>544908629</td></tr><tr><td>Active</td><td>W1/20251013/02</td><td>L566-1797/98311</td><td>544908635</td></tr><tr><td>Active</td><td>W1/20251014/01</td><td>L580-1798/95516</td><td>544908450</td></tr><tr><td>Active</td><td>W1/20251014/02</td><td>L566-1797/98086</td><td>544908631</td></tr><tr><td>Active</td><td>W1/20251015/01</td><td>L566-1797/98330</td><td>544908658</td></tr><tr><td>Active</td><td>W1/20251015/02</td><td>L566-1797/98313</td><td>544908641</td></tr><tr><td>Active</td><td>W1/20251016/01</td><td>L524-1355/77723</td><td>544908882</td></tr><tr><td>Active</td><td>W1/20251017/01</td><td>L566-1797/98334</td><td>544908660</td></tr><tr><td>Active</td><td>W1/20251017/02</td><td>L566-1797/98317</td><td>544908647</td></tr><tr><td>Released</td><td>Re/10/17/2025</td><td>L550-1796/95858</td><td>544908484</td></tr><tr><td>Released</td><td>Re/10/17/2025</td><td>L550-1796/94396</td><td>544908362</td></tr><tr><td>Active</td><td>W1/20251020/01</td><td>L566-1797/98338</td><td>544908667</td></tr><tr><td>Active</td><td>W1/20251020/02</td><td>L566-1797/98913</td><td>544908639</td></tr><tr><td>Active</td><td>W1/20251021/01</td><td>L566-1797/98917</td><td>544908648</td></tr><tr><td>Active</td><td>W1/20251021/02</td><td>L566-1797/98321</td><td>544908649</td></tr><tr><td>Active</td><td>W1/20251022/01</td><td>L566-1797/98905</td><td>544908659</td></tr><tr><td>Active</td><td>W1/20251022/02</td><td>L566-1797/98323</td><td>544908650</td></tr><tr><td>Active</td><td>W1/20251023/01</td><td>L566-1797/98925</td><td>544908675</td></tr><tr><td>Active</td><td>W1/20251023/02</td><td>L566-1797/98309</td><td>544908662</td></tr><tr><td>Released</td><td>Re/10/23/2025</td><td>L538-1493/93132</td><td>544908289</td></tr><tr><td>Active</td><td>W1/20251024/01</td><td>L566-1797/98909</td><td>544908674</td></tr><tr><td>Active</td><td>W1/20251027/02</td><td>L566-1797/98319</td><td>544908630</td></tr><tr><td>Active</td><td>W1/20251028/99</td><td>L566-1797/98083</td><td>544908610</td></tr><tr><td>Active</td><td>W1/20251028/99</td><td>L566-1797/98081</td><td>544908611</td></tr><tr><td>Active</td><td>W1/20251029/99</td><td>L566-1797/98079</td><td>544908612</td></tr><tr><td>Active</td><td>W1/20251030/99</td><td>L538-1493/97290</td><td>544908597</td></tr><tr><td>Active</td><td>W1/20251031/99</td><td>L550-1796/97585</td><td>544908687</td></tr><tr><td>Planned</td><td>Re/11/14/2025</td><td>L550-1796/94394</td><td>544908363</td></tr><tr><td>Planned</td><td>Re/11/14/2025</td><td>L550-1796/94402</td><td>544908364</td></tr><tr><td>Planned</td><td>Re/11/14/2025</td><td>L550-1796/97252</td><td>544908525</td></tr><tr><td>Planned</td><td>Re/11/14/2025</td><td>L550-1796/97256</td><td>544908526</td></tr><tr><td>Planned</td><td>Re/11/14/2025</td><td>L580-1798/94382</td><td>544908395</td></tr></tbody></table></div>
+
+  <script>
+    document.getElementById('upload').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, { type: 'array' });
+
+        const firstSheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[firstSheetName];
+        const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+        let table = '<table>';
+        jsonData.forEach(row => {
+          table += '<tr>';
+          row.forEach(cell => {
+            table += `<td>${cell}</td>`;
+          });
+          table += '</tr>';
+        });
+        table += '</table>';
+
+        document.getElementById('output').innerHTML = table;
+      };
+
+      reader.readAsArrayBuffer(file);
+    });
+
+    function savePage() {
+      const content = document.documentElement.outerHTML;
+      const blob = new Blob([content], { type: 'text/html' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'saved_page.html';
+      a.click();
+    }
+  </script>
+
+
+</body></html>

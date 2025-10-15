@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Excel Upload and Display</title>
+  <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 5px;
+    }
+    #controls {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Upload Excel File</h2>
+  <input type="file" id="upload" accept=".xlsx, .xls" />
+  
+  <div id="controls">
+    <button onclick="savePage()">Save Page as HTML</button>
+  </div>
+
+  <div id="output"></div>
+
+  <script>
+    document.getElementById('upload').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, { type: 'array' });
+
+        const firstSheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[firstSheetName];
+        const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+        let table = '<table>';
+        jsonData.forEach(row => {
+          table += '<tr>';
+          row.forEach(cell => {
+            table += `<td>${cell}</td>`;
+          });
+          table += '</tr>';
+        });
+        table += '</table>';
+
+        document.getElementById('output').innerHTML = table;
+      };
+
+      reader.readAsArrayBuffer(file);
+    });
+
+    function savePage() {
+      const content = document.documentElement.outerHTML;
+      const blob = new Blob([content], { type: 'text/html' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'Production plan.html';
+      a.click();
+    }
+  </script>
+</body>
+</html>
