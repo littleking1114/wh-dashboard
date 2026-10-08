@@ -1,89 +1,119 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <title>Raw material turnover rate</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/moment"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-
-    <link rel="icon" href="web icon.png" type="image/png">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raw material turnover rate</title>
+<link rel="icon" href="web icon.png" type="image/png">
+<link rel="stylesheet" href="theme.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 </head>
 <body>
-    <h1>Raw material turnover rate</h1>
-    <canvas id="turnoverRateChart" width="800" height="400"></canvas>
-    <script>
-        // Register the ChartDataLabels plugin
-        Chart.register(ChartDataLabels);
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 20h16"/>
+            <path d="M7 20v-7M12 20V5.5M17 20v-10"/>
+          </svg>
+        </span>
+        <div class="brand-text">
+          <h1>Warehouse Dashboard</h1>
+          <p>LMD Internal Logistics</p>
+        </div>
+      </a>
+      <div class="topbar-right">
+        <span class="top-tag">
+          <span class="dot"></span>
+          <span class="tag-lines">
+            <span>仓库内部物流</span>
+            <span class="license">@版权所有</span>
+          </span>
+        </span>
+        <a class="home-btn" href="index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-6h4v6"/></svg>
+          <span>首页</span>
+        </a>
+      </div>
+    </div>
+  </header>
 
-        var ctx = document.getElementById('turnoverRateChart').getContext('2d');
-        var turnoverRateChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ["11/1/2021", "2/7/2022", "3/2/2022", "4/1/2022", "5/5/2022", "6/1/2022", "7/1/2022", "8/1/2022", "9/1/2022", "10/9/2022",
-                         "11/1/2022", "12/7/2022", "1/5/2023", "2/1/2023", "3/1/2023", "4/6/2023", "5/4/2023", "6/1/2023", "7/3/2023", "8/1/2023",
-                         "9/4/2023", "10/9/2023", "11/1/2023", "12/1/2023", "1/2/2024", "2/1/2024", "3/1/2024", "4/1/2024", "5/6/2024", "6/3/2024",
-                         "7/1/2024", "8/1/2024", "9/2/2024", "10/8/2024", "11/1/2024", "12/2/2024", "1/2/2025", "2/5/2025", 							 				 "3/3/2025","4/1/2025","5/6/2025","6/3/2025","7/1/2025","8/4/2025","9/1/2025","10/13/2025","11/03/2025","12/01/2025","01/05/2026","02/09/2026",
-			 "3/2/2026","4/1/2026","5/11/2026","6/1/2026","7/1/2026","8/10/2026","9/1/2026"],
-                datasets: [{
-                    label: 'Turnover rate',
-                    data: [5.091, 6.142, 6.017, 6.013, 5.478, 5.394, 5.263, 5.249, 5.539, 5.567,
-                           4.021, 4.179, 5.945, 5.135, 4.79, 3.212, 4.693, 4.399, 3.889, 3.595,
-                           3.42, 3.32, 3.23, 3.06, 2.86, 2.83, 2.57, 2.744, 2.749, 2.96,
-                           2.84, 2.96, 2.89, 3.05, 3.01, 3.5, 3.9, 4.1, 4.1,5.2,5.7,5.9,6.11,6.33,6.61,6.62,6.18,6.70,7.49,6.70,6.28,
-			   6.95,7.17,7.40,7.19,7.63,6.65],
-                    backgroundColor: 'rgba(144, 238, 144, 0.5)',
-                    borderColor: 'rgba(0, 128, 0, 1)',
-                    borderWidth: 1,
-                    pointRadius: 5,
-                    pointHoverRadius: 7,
-                    pointBackgroundColor: 'rgba(0, 128, 0, 1)',
-                    pointBorderColor: 'rgba(0, 128, 0, 1)',
-                    fill: true,
-                    datalabels: {
-                        align: 'end',
-                        anchor: 'end',
-                        color: 'black',
-                        formatter: function(value, context) {
-                            return value.toFixed(2);
-                        }
-                    }
-                }]
-            },
-            options: {
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                    title: {
-                        display: true,
-                        text: 'Raw material turnover rate'
-                    },
-                    datalabels: {
-                        color: 'black'
-                    }
-                },
-                scales: {
-                    x: {
-                        type: 'time',
-                        time: {
-                            unit: 'month'
-                        },
-                        title: {
-                            display: true,
-                            text: 'Date'
-                        }
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: 'Turnover rate'
-                        }
-                    }
-                }
-            }
-        });
-    </script>
+  <main class="wrap">
+    <nav class="crumbs">
+      <a href="index.html">首页</a>
+      <span class="sep">/</span>
+      <span class="now">库存周转率</span>
+    </nav>
+    <div class="page-head">
+      <h1>Raw material turnover rate</h1>
+      <p class="sub">原材料库存周转率（按月）</p>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-box">
+        <canvas id="turnoverRateChart"></canvas>
+      </div>
+    </div>
+  </main>
+
+  <footer class="foot">该页面为信息看板，无商业用途。</footer>
+
+  <script>
+    Chart.register(ChartDataLabels);
+
+    var ctx = document.getElementById('turnoverRateChart').getContext('2d');
+    var turnoverRateChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ["11/1/2021", "2/7/2022", "3/2/2022", "4/1/2022", "5/5/2022", "6/1/2022", "7/1/2022", "8/1/2022", "9/1/2022", "10/9/2022",
+                 "11/1/2022", "12/7/2022", "1/5/2023", "2/1/2023", "3/1/2023", "4/6/2023", "5/4/2023", "6/1/2023", "7/3/2023", "8/1/2023",
+                 "9/4/2023", "10/9/2023", "11/1/2023", "12/1/2023", "1/2/2024", "2/1/2024", "3/1/2024", "4/1/2024", "5/6/2024", "6/3/2024",
+                 "7/1/2024", "8/1/2024", "9/2/2024", "10/8/2024", "11/1/2024", "12/2/2024", "1/2/2025", "2/5/2025", "3/3/2025","4/1/2025","5/6/2025","6/3/2025","7/1/2025","8/4/2025","9/1/2025","10/13/2025","11/03/2025","12/01/2025","01/05/2026","02/09/2026",
+                 "3/2/2026","4/1/2026","5/11/2026","6/1/2026","7/1/2026","8/10/2026","9/1/2026","10/8/2026"],
+        datasets: [{
+          label: 'Turnover rate',
+          data: [5.091, 6.142, 6.017, 6.013, 5.478, 5.394, 5.263, 5.249, 5.539, 5.567,
+                 4.021, 4.179, 5.945, 5.135, 4.79, 3.212, 4.693, 4.399, 3.889, 3.595,
+                 3.42, 3.32, 3.23, 3.06, 2.86, 2.83, 2.57, 2.744, 2.749, 2.96,
+                 2.84, 2.96, 2.89, 3.05, 3.01, 3.5, 3.9, 4.1, 4.1,5.2,5.7,5.9,6.11,6.33,6.61,6.62,6.18,6.70,7.49,6.70,6.28,
+                 6.95,7.17,7.40,7.19,7.63,6.65,6.48],
+          backgroundColor: 'rgba(144, 238, 144, 0.5)',
+          borderColor: 'rgba(0, 128, 0, 1)',
+          borderWidth: 1,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointBackgroundColor: 'rgba(0, 128, 0, 1)',
+          pointBorderColor: 'rgba(0, 128, 0, 1)',
+          fill: true,
+          datalabels: {
+            align: 'end',
+            anchor: 'end',
+            color: 'black',
+            formatter: function(value, context) { return value.toFixed(2); }
+          }
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          title: { display: true, text: 'Raw material turnover rate' },
+          datalabels: { color: 'black' }
+        },
+        scales: {
+          x: { type: 'time', time: { unit: 'month' }, title: { display: true, text: 'Date' } },
+          y: { title: { display: true, text: 'Turnover rate' } }
+        }
+      }
+    });
+  </script>
 </body>
 </html>
+
+
+

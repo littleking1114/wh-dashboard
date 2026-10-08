@@ -1,126 +1,369 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warehouse Dashboard</title>
-    <link rel="icon" href="web icon.png" type="image/png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warehouse Dashboard</title>
+<link rel="icon" href="web icon.png" type="image/png">
 
-    
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .header {
-            text-align: center;
-            font-size: 2em;
-            margin: 20px 0;
-        }
-        .container {
-            display: flex;
-            flex-direction: column; /* Stack rows vertically */
-            padding-bottom: 20px;
-        }
-        .row {
-            display: flex;
-            width: 100%;
-            margin-bottom: 20px; /* Add some space between rows */
-        }
-        .doc, .kpis {
-            background-color: lightgreen;
-            width: 50%;
-            padding: 20px;
-            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
-            border: 1px dashed #000;
-            height: 150px;
-        }
-        .kpis {
-            background-color: lightcyan;
-        }
-        .plan, .other {
-            background-color: rgba(255, 255, 204, 0.7);
-            width: 50%; 
-            padding: 20px;
-            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
-            border: 1px dashed #000;
-            height: 300px;
-        }
-        .other {
-            background-color: rgba(248, 212, 240);
-        }
-    </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-27DHZ9F412"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-27DHZ9F412');
+</script>
 
+<style>
+  :root{
+    --lb-yellow:#FFD100;
+    --lb-yellow-dark:#E7B900;
+    --lb-yellow-tint:#FFF7D6;
+    --lb-green:#7FB77E;
+    --lb-green-dark:#5C9A5B;
+    --lb-green-tint:#EAF4EA;
+    --grey-900:#2B2B29;
+    --grey-800:#3C3C3B;
+    --grey-700:#4E4E4B;
+    --grey-500:#76766F;
+    --grey-300:#CFCFC9;
+    --grey-200:#E7E7E2;
+    --grey-100:#F4F4F0;
+    --white:#ffffff;
+    --radius:18px;
+    --shadow-sm:0 6px 18px rgba(43,43,41,.06);
+    --shadow-md:0 16px 36px rgba(43,43,41,.12);
+  }
 
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-27DHZ9F412"></script>
-	<script>
-	    window.dataLayer = window.dataLayer || [];
-	    function gtag(){dataLayer.push(arguments);}
-	    gtag('js', new Date());
-	    gtag('config', 'G-27DHZ9F412');
-	</script>
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Segoe UI","Microsoft YaHei","PingFang SC",Arial,Helvetica,sans-serif;
+    color:var(--grey-800);
+    line-height:1.55;
+    background:
+      radial-gradient(1100px 420px at 50% -220px, #ffffff 0%, rgba(255,255,255,0) 62%),
+      var(--grey-100);
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  a{text-decoration:none;color:inherit;}
 
+  /* ===== Header ===== */
+  .topbar{
+    position:relative;
+    background:linear-gradient(135deg,#34342F 0%,#26261F 100%);
+    color:#fff;
+    overflow:hidden;
+  }
+  .topbar::after{
+    content:"";
+    position:absolute;left:0;right:0;bottom:0;height:6px;
+    background:linear-gradient(90deg,var(--lb-yellow) 0%,var(--lb-yellow-dark) 100%);
+  }
+  .topbar::before{
+    content:"";
+    position:absolute;right:-140px;top:-160px;width:420px;height:420px;border-radius:50%;
+    background:radial-gradient(circle, rgba(255,209,0,.30) 0%, rgba(255,209,0,0) 68%);
+  }
+  .topbar-inner{
+    position:relative;z-index:1;
+    max-width:1180px;margin:0 auto;
+    padding:32px 28px 38px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:16px;}
+  .brand-mark{
+    width:54px;height:54px;flex:0 0 auto;border-radius:15px;
+    background:linear-gradient(140deg,#FFDE3D 0%,var(--lb-yellow) 55%,var(--lb-yellow-dark) 100%);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 24px rgba(255,209,0,.35);
+  }
+  .brand-mark svg{width:30px;height:30px;stroke:var(--grey-900);}
+  .brand-text h1{margin:0;font-size:1.6rem;font-weight:700;letter-spacing:.4px;}
+  .brand-text p{margin:3px 0 0;font-size:.78rem;letter-spacing:3px;text-transform:uppercase;color:#BDBDB4;}
+  .top-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:9px 18px;border-radius:14px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,209,0,.35);
+    color:#F5E9B0;font-size:.82rem;letter-spacing:1px;white-space:nowrap;
+  }
+  .top-tag .dot{width:8px;height:8px;border-radius:50%;background:var(--lb-yellow);box-shadow:0 0 0 3px rgba(255,209,0,.22);}
+  .tag-lines{display:flex;flex-direction:column;line-height:1.4;}
+  .tag-lines .license{color:#C9C9BF;font-size:.76rem;letter-spacing:.5px;}
+
+  /* ===== Layout ===== */
+  .wrap{max-width:1180px;margin:0 auto;padding:38px 28px 20px;}
+  .section-label{
+    display:flex;align-items:center;gap:10px;
+    font-size:.8rem;letter-spacing:3px;text-transform:uppercase;color:var(--grey-500);
+    font-weight:700;margin:0 0 20px;
+  }
+  .section-label::before{
+    content:"";width:22px;height:6px;border-radius:3px;background:var(--lb-yellow);
+  }
+  .grid{
+    display:grid;gap:24px;
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  /* ===== Card ===== */
+  .card{
+    position:relative;
+    background:var(--white);
+    border:1px solid var(--grey-200);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow-sm);
+    padding:26px 24px 22px;
+    overflow:hidden;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .card::before{
+    content:"";position:absolute;left:0;top:0;right:0;height:6px;
+    background:var(--lb-yellow);
+  }
+  .card--green::before{background:var(--lb-green);}
+  .card--grey::before{background:var(--grey-700);}
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);}
+
+  .card-head{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+  .card-icon{
+    width:48px;height:48px;flex:0 0 auto;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--lb-yellow-tint);
+  }
+  .card-icon svg{width:24px;height:24px;stroke:var(--grey-900);}
+  .card-icon.icon--green{background:var(--lb-green-tint);}
+  .card-icon.icon--green svg{stroke:var(--lb-green-dark);}
+  .card-icon.icon--grey{background:var(--grey-100);}
+  .card-icon.icon--grey svg{stroke:var(--grey-700);}
+  .card-title h2{margin:0;font-size:1.15rem;font-weight:700;color:var(--grey-900);}
+  .card-title span{display:block;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--grey-500);margin-top:2px;}
+
+  .links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  .link{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:13px 15px;border-radius:12px;
+    background:#FBFBF8;border:1px solid var(--grey-200);
+    color:var(--grey-700);font-weight:600;font-size:.95rem;
+    transition:background .2s ease, border-color .2s ease, transform .2s ease, color .2s ease;
+  }
+  .link .label{display:flex;align-items:center;gap:10px;min-width:0;flex:1 1 auto;}
+  .link .label .txt{min-width:0;word-break:break-word;}
+  .link .label svg{width:16px;height:16px;stroke:currentColor;flex:0 0 auto;opacity:.75;}
+  .link .go{
+    width:18px;height:18px;flex:0 0 auto;stroke:var(--grey-300);
+    transition:transform .2s ease, stroke .2s ease;
+  }
+  .link:hover{
+    background:var(--lb-yellow-tint);
+    border-color:var(--lb-yellow);
+    color:var(--grey-900);
+    transform:translateX(4px);
+  }
+  .link:hover .go{stroke:var(--grey-700);transform:translateX(2px);}
+  .card--green .link:hover{background:var(--lb-green-tint);border-color:var(--lb-green);}
+
+  .placeholder{
+    display:flex;align-items:center;gap:12px;
+    padding:18px;border-radius:12px;
+    background:var(--grey-100);border:1px dashed var(--grey-300);
+    color:var(--grey-500);font-size:.9rem;
+  }
+  .placeholder svg{width:20px;height:20px;stroke:var(--grey-500);flex:0 0 auto;}
+
+  /* ===== Footer ===== */
+  .foot{
+    max-width:1180px;margin:0 auto;padding:26px 28px 44px;
+    color:var(--grey-500);font-size:.8rem;letter-spacing:.5px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .foot::before{content:"";width:14px;height:14px;border-radius:4px;background:var(--lb-yellow);display:inline-block;flex:0 0 auto;}
+
+  @media (max-width:760px){
+    .topbar-inner{padding:24px 20px 30px;}
+    .brand-text h1{font-size:1.3rem;}
+    .wrap{padding:28px 20px 10px;}
+    .grid{grid-template-columns:1fr;gap:18px;}
+    .card{padding:22px 18px 18px;}
+  }
+</style>
 </head>
 <body>
-    <div class="header">
-        Warehouse Dashboard
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="doc">
-                <h2>相关文档</h2>
-                <p>
-                    <a href="./doc.html">安全文件</a>
-                </p>    
-		<p>
-                    <a href="./LMD车间现场作业作息时间管理要求.html">LMD车间现场作业作息时间管理要求</a>
-                </p>    
-            </div>
-            <div class="kpis">
-                <h2>KPIs 绩效指标</h2>
-                <p>
-                    <a href="./KPI.html"> KPI历史记录</a>
-                </p>
-		<p>
-                    <a href="./turnover rate.html"> 库存周转率</a>
-                </p>
-            </div>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 20h16"/>
+            <path d="M7 20v-7M12 20V5.5M17 20v-10"/>
+          </svg>
         </div>
-        <div class="row">
-            <div class="plan">
-                <h2>工作计划</h2>
-		<p>
-                    <a href="https://app.powerbi.com/view?r=eyJrIjoiZTFlYmEwMWYtMzA3NS00N2JkLWE1MjYtZWE4MjM1NmYyN2E4IiwidCI6ImNlNGYyYTQwLWFlNjEtNDM1OS05YzA3LTBjYTk5Mzg0M2Y0ZCJ9">
-			每日监控
-                    </a>
-                </p> 
-                <p>
-                    <a href="https://app.powerbi.com/view?r=eyJrIjoiNWEwODgxODUtOTllYy00ZWVmLWFjYzktM2MzZmY4ZTRlYzg0IiwidCI6ImNlNGYyYTQwLWFlNjEtNDM1OS05YzA3LTBjYTk5Mzg0M2Y0ZCJ9">
-                        计划发货条数
-                    </a>
-                </p> 
-                <p>
-                    <a href="./CKD.html">
-                        CKD包装计划
-                    </a>
-                </p>    
-		<p>
-                    <a href="https://app.powerbi.com/view?r=eyJrIjoiNjEwNDg0OTgtZDJlNi00NTg1LWEwZDgtMDJiNTlkZGZmOWE0IiwidCI6ImNlNGYyYTQwLWFlNjEtNDM1OS05YzA3LTBjYTk5Mzg0M2Y0ZCJ9">
-                        进口集装箱到厂计划
-                    </a>
-                </p> 
-
-            </div>
-            <div class="other">
-                <h2>部门活动等</h2>
-                <p>
-                    其它等活动内容
-                </p>    
-            </div>
+        <div class="brand-text">
+          <h1>Warehouse Dashboard</h1>
+          <p>LMD Internal Logistics</p>
         </div>
+      </div>
+      <span class="top-tag">
+        <span class="dot"></span>
+        <span class="tag-lines">
+          <span>仓库内部物流</span>
+          <span class="license">@版权所有</span>
+        </span>
+      </span>
     </div>
+  </header>
 
+  <main class="wrap">
+    <div class="section-label">功能导航</div>
+    <div class="grid">
 
+      <!-- 1. 相关文档 -->
+      <section class="card card--yellow">
+        <div class="card-head">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
+              <path d="M14 3v5h5"/>
+              <path d="M9 13h6M9 17h4"/>
+            </svg>
+          </div>
+          <div class="card-title">
+            <h2>相关文档</h2>
+            <span>Documents</span>
+          </div>
+        </div>
+        <ul class="links">
+          <li>
+            <a class="link" href="./doc.html">
+              <span class="label">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h6M9 8h6M9 16h3"/></svg>
+                <span class="txt">安全文件</span>
+              </span>
+              <svg class="go" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 6l6 6-6 6"/></svg>
+            </a>
+          </li>
+          <li>
+            <a class="link" href="./LMD车间现场作业作息时间管理要求.html">
+              <span class="label">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                <span class="txt">LMD车间现场作业作息时间管理要求</span>
+              </span>
+              <svg class="go" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 6l6 6-6 6"/></svg>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 2. KPIs -->
+      <section class="card card--green">
+        <div class="card-head">
+          <div class="card-icon icon--green" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 20h16"/>
+              <path d="M6 20v-6M11 20V8M16 20v-9M21 20V11"/>
+            </svg>
+          </div>
+          <div class="card-title">
+            <h2>KPIs 绩效指标</h2>
+            <span>Performance</span>
+          </div>
+        </div>
+        <ul class="links">
+          <li>
+            <a class="link" href="./KPI.html">
+              <span class="label">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16M7 19V9M12 19V5M17 19v-7"/></svg>
+                <span class="txt">KPI历史记录</span>
+              </span>
+              <svg class="go" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 6l6 6-6 6"/></svg>
+            </a>
+          </li>
+          <li>
+            <a class="link" href="./turnover rate.html">
+              <span class="label">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v5h-5"/></svg>
+                <span class="txt">库存周转率</span>
+              </span>
+              <svg class="go" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 6l6 6-6 6"/></svg>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 3. 工作计划 -->
+      <section class="card card--yellow">
+        <div class="card-head">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3.5" y="5" width="17" height="16" rx="2.5"/>
+              <path d="M3.5 9.5h17M8 3v4M16 3v4"/>
+              <path d="M8 14h3"/>
+            </svg>
+          </div>
+          <div class="card-title">
+            <h2>工作计划</h2>
+            <span>Work Plan</span>
+          </div>
+        </div>
+        <ul class="links">
+          <li>
+            <a class="link" href="https://app.powerbi.com/view?r=eyJrIjoiZTFlYmEwMWYtMzA3NS00N2JkLWE1MjYtZWE4MjM1NmYyN2E4IiwidCI6ImNlNGYyYTQwLWFlNjEtNDM1OS05YzA3LTBjYTk5Mzg0M2Y0ZCJ9" target="_blank" rel="noopener">
+              <span class="label"><span class="txt">每日监控</span></span>
+              <svg class="go" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4l-8.5 8.5"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg>
+            </a>
+          </li>
+          <li>
+            <a class="link" href="https://app.powerbi.com/view?r=eyJrIjoiNWEwODgxODUtOTllYy00ZWVmLWFjYzktM2MzZmY4ZTRlYzg0IiwidCI6ImNlNGYyYTQwLWFlNjEtNDM1OS05YzA3LTBjYTk5Mzg0M2Y0ZCJ9" target="_blank" rel="noopener">
+              <span class="label"><span class="txt">计划发货条数</span></span>
+              <svg class="go" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4l-8.5 8.5"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg>
+            </a>
+          </li>
+          <li>
+            <a class="link" href="./CKD.html">
+              <span class="label"><span class="txt">CKD包装计划</span></span>
+              <svg class="go" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 6l6 6-6 6"/></svg>
+            </a>
+          </li>
+          <li>
+            <a class="link" href="https://app.powerbi.com/view?r=eyJrIjoiNjEwNDg0OTgtZDJlNi00NTg1LWEwZDgtMDJiNTlkZGZmOWE0IiwidCI6ImNlNGYyYTQwLWFlNjEtNDM1OS05YzA3LTBjYTk5Mzg0M2Y0ZCJ9" target="_blank" rel="noopener">
+              <span class="label"><span class="txt">进口集装箱到厂计划</span></span>
+              <svg class="go" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4l-8.5 8.5"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 4. 部门活动 -->
+      <section class="card card--grey">
+        <div class="card-head">
+          <div class="card-icon icon--grey" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="8" r="3"/>
+              <path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/>
+              <path d="M16 5.5a3 3 0 0 1 0 5.6"/>
+              <path d="M17.5 14.3A6 6 0 0 1 21 20"/>
+            </svg>
+          </div>
+          <div class="card-title">
+            <h2>部门活动等</h2>
+            <span>Activities</span>
+          </div>
+        </div>
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+          <span>其它等活动内容</span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="foot">该页面为信息看板，无商业用途。</footer>
 </body>
 </html>
+
+
+

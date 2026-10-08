@@ -1,45 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>文档分享</title>
-    <link rel="icon" href="web icon.png" type="image/png">
-
-    <style>
-        body {
-            background-color: rgba(194, 191, 253,0.85);
-            font-family: Arial, sans-serif;
-            color: #000;
-        }
-        .container {
-            padding: 20px;
-        }
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-        }
-        p {
-            margin: 10px 0;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文档分享</title>
+<link rel="icon" href="web icon.png" type="image/png">
+<link rel="stylesheet" href="theme.css">
 </head>
 <body>
-    <div class="container">
-        <h1>文档分享</h1>
-        <p>
-	    <a href=".\DOC\丰田叉车安全手册.html">叉车作业安全手册</a>
-        </p>
-        <p>
-	    <a href=".\DOC\安全生产责任制.html">安全生产责任制（仓库及内部物流部）</a>
-        </p>
-	<p>
-	    <a href=".\DOC\dangerous goods basic trainingTLC 27.02_LLG.html">危险品培训资料</a>
-        </p>
-	<p>
-	    <a href=".\DOC\叉车安全管理制度.html">叉车安全管理制度</a>
-        </p>
-
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 20h16"/>
+            <path d="M7 20v-7M12 20V5.5M17 20v-10"/>
+          </svg>
+        </span>
+        <div class="brand-text">
+          <h1>Warehouse Dashboard</h1>
+          <p>LMD Internal Logistics</p>
+        </div>
+      </a>
+      <div class="topbar-right">
+        <span class="top-tag">
+          <span class="dot"></span>
+          <span class="tag-lines">
+            <span>仓库内部物流</span>
+            <span class="license">@版权所有</span>
+          </span>
+        </span>
+        <a class="home-btn" href="index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-6h4v6"/></svg>
+          <span>首页</span>
+        </a>
+      </div>
     </div>
+  </header>
+
+  <main class="wrap">
+    <nav class="crumbs">
+      <a href="index.html">首页</a>
+      <span class="sep">/</span>
+      <span class="now">安全文件</span>
+    </nav>
+    <div class="page-head">
+      <h1>相关文档</h1>
+      <p class="sub">安全制度、作业规范与培训资料</p>
+    </div>
+
+    <div class="card card--yellow card--flat">
+      <ul class="links">
+        <li><a class="link" href="./DOC/丰田叉车安全手册.html"><span class="label"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h6M9 8h6M9 16h3"/></svg><span class="txt">叉车作业安全手册</span></span><svg class="go" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 6l6 6-6 6"/></svg></a></li>
+        <li><a class="link" href="./DOC/安全生产责任制.html"><span class="label"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h6M9 8h6M9 16h3"/></svg><span class="txt">安全生产责任制（仓库及内部物流部）</span></span><svg class="go" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 6l6 6-6 6"/></svg></a></li>
+        <li><a class="link" href="./DOC/dangerous goods basic trainingTLC 27.02_LLG.html"><span class="label"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h6M9 8h6M9 16h3"/></svg><span class="txt">危险品培训资料</span></span><svg class="go" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 6l6 6-6 6"/></svg></a></li>
+        <li><a class="link" href="./DOC/叉车安全管理制度.html"><span class="label"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h6M9 8h6M9 16h3"/></svg><span class="txt">叉车安全管理制度</span></span><svg class="go" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 6l6 6-6 6"/></svg></a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer class="foot">该页面为信息看板，无商业用途。</footer>
 </body>
 </html>
+
+
+
