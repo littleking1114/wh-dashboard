@@ -1,96 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CKD planning</title>
-    <link rel="icon" href="../web icon.png" type="image/png">
-    
-    <style>
-
-        body {
-            background-color: rgba(253, 243, 237, 0.5);
-            font-family: Arial, sans-serif;
-        }
-
-        .header {
-            text-align: center;
-            font-size: 24px;
-            margin: 40px 0;
-        }
-	
-	table {
-    	    border-collapse: collapse;
-    	    table-layout: fixed;
-	}
-
-        
-	th, td {
-	    border: 1px solid #ddd;
-	    padding: 8px;
-	    text-align: center;
-	    width: 60px;
-	}
-  
-        th {
-            background-color: #f2f2f2;
-        }
-	.green {
-            background-color: lightgreen;
-        }
-	.yellow	{
-	    background-color: lightyellow;
-	}
-        .black {
-            color: black;
-        }
-	.first-row {
-            height: 70px; /* Set the height of the first row */
-	    border-bottom: 4px solid #000;
-        }
-
-	.spacer {
-            margin-top: 100px; /* Adjust the value as needed */
-        }
-
-	/* ===================Below is to add the explanation of the colors.*/
-
-	.footer-content {
-            bottom: 0;
-            left: 0;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .green-square {
-            width: 50px;
-            height: 20px;
-            background-color: lightgreen;
-            margin-right: 8px;
-        }
-        .yellow-square {
-            width: 50px;
-            height: 20px;
-            background-color: lightyellow;
-            margin-right: 8px;
-        }
-        .text {
-            font-size: 14px;
-        }
-	/* ==================Above is to add the explanation of the colors.*/
-
-	
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2025 CKD包装计划</title>
+<link rel="icon" href="../web icon.png" type="image/png">
+<link rel="stylesheet" href="../theme.css">
 </head>
 <body>
-    <div class="header">
-        2025 CKD包装计划
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 20h16"/>
+            <path d="M7 20v-7M12 20V5.5M17 20v-10"/>
+          </svg>
+        </span>
+        <div class="brand-text">
+          <h1>Warehouse Dashboard</h1>
+          <p>LMD Internal Logistics</p>
+        </div>
+      </a>
+      <div class="topbar-right">
+        <span class="top-tag">
+          <span class="dot"></span>
+          <span class="tag-lines">
+            <span>仓库内部物流</span>
+            <span class="license">@版权所有</span>
+          </span>
+        </span>
+        <a class="home-btn" href="../index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-6h4v6"/></svg>
+          <span>首页</span>
+        </a>
+      </div>
     </div>
-    <table>
-        <tr class="first-row">
-            <th></th>
+  </header>
+
+  <main class="wrap">
+    <nav class="crumbs">
+      <a href="../index.html">首页</a>
+      <span class="sep">/</span>
+      <a href="../CKD.html">CKD包装计划</a>
+      <span class="sep">/</span>
+      <span class="now">2025 CKD包装计划</span>
+    </nav>
+    <div class="page-head">
+      <h1>2025 CKD包装计划</h1>
+      <p class="sub">CKD 包装计划进度表</p>
+    </div>
+
+    <div class="card card--yellow card--flat">
+      <div class="tbl-scroll">
+        <table class="tbl">
+          <thead>
+            <tr><th></th>
             <th>1月</th>
             <th>2月</th>
             <th>3月</th>
@@ -102,10 +67,10 @@
             <th>9月</th>
             <th>10月</th>
             <th>11月</th>
-            <th>12月</th>
-        </tr>
-        <tr>
-            <td>R920</td>
+            <th>12月</th></tr>
+          </thead>
+          <tbody>
+          <tr><td>R920</td>
             <td></td>
             <td></td>
             <td class="green">6</td>
@@ -117,10 +82,8 @@
             <td></td>
             <td></td>
             <td></td>
-            <td class="green">6</td>
-        </tr>
-        <tr>
-            <td>L524</td>
+            <td class="green">6</td></tr>
+          <tr><td>L524</td>
             <td></td>
             <td></td>
             <td></td>
@@ -132,10 +95,8 @@
             <td></td>
             <td></td>
             <td></td>
-            <td class="green">8</td>
-        </tr>
-        <tr>
-            <td>L538</td>
+            <td class="green">8</td></tr>
+          <tr><td>L538</td>
             <td class="green">8</td>
             <td></td>
             <td></td>
@@ -147,10 +108,8 @@
             <td class="green">8</td>
             <td></td>
             <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>L566</td>
+            <td></td></tr>
+          <tr><td>L566</td>
             <td></td>
             <td class="green">8</td>
             <td></td>
@@ -162,10 +121,8 @@
             <td></td>
             <td class="green">8</td>
             <td class="green">8</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>A918</td>
+            <td></td></tr>
+          <tr><td>A918</td>
             <td></td>
             <td></td>
             <td class="green">8</td>
@@ -177,23 +134,22 @@
             <td></td>
             <td></td>
             <td class="green">8</td>
-            <td></td>
-        </tr>
-    </table>
+            <td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="legend">
+        <span class="item"><span class="sw green"></span>已完成</span>
+        <span class="item"><span class="sw yellow"></span>包装中</span>
+      </div>
+      <p class="note">全年计划：122台。</p>
+      <p class="note">最近更新日期：2025-12-22</p>
+    </div>
+  </main>
 
-<p class="spacer"></p>
-<p>全年计划：122台。</p>
-
-<div class="footer-content">
-    <div class="green-square"></div>
-    <span class="text">已完成</span>
-</div>
-<div class="footer-content">
-    <div class="yellow-square"></div>
-    <span class="text">包装中</span>
-</div>
-<p>最近更新日期：2025-12-22</p>
-
-
+  <footer class="foot">该页面为信息看板，无商业用途。</footer>
 </body>
 </html>
+
+
+
